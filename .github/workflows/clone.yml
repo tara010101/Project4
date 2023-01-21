@@ -1,19 +1,17 @@
-name: clean workflow
+name: clone workflow
 on:
   workflow_dispatch:
 
 jobs:
-  clean:
-    name: Clean
+  clone:
+    name: Clone
     runs-on:
     steps:
-      - name: clean
+      - name: testing
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: |
-            unalias rm
-            rm -rf Lecture4
+          script: git clone git@github.com:cmsc389T-winter23/Lecture4.git
