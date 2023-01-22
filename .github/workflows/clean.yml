@@ -1,4 +1,4 @@
-me: clean workflow
+name: clean workflow
 on:
   workflow_dispatch:
 
