@@ -15,14 +15,11 @@ jobs:
   
   docker-compose:
     runs-on: ubuntu-latest
-    runs:
-      using: 'node16'
-      steps:
-        - uses: actions/checkout@v2
-        - name: Build and Run All Containers
-          run: |
-            sed -i "s/device:.*/device: $(pwd | sed 's/\//\\\//g')/g" docker-compose.yml
-            cat docker-compose.yml
-            docker-compose up -d
-            wget -O test.html localhost:80
-          
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and Run All Containers
+        run: |
+          sed -i "s/device:.*/device: $(pwd | sed 's/\//\\\//g')/g" docker-compose.yml
+          cat docker-compose.yml
+          docker-compose up -d
+          wget -O test.html localhost:80
