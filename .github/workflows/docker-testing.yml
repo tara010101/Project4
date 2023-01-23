@@ -6,7 +6,7 @@ jobs:
   build-website:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build Website Container
         run: |
           docker build -t node-web-app .
@@ -16,7 +16,7 @@ jobs:
   docker-compose:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build and Run All Containers
         run: |
           sed -i "s/device:.*/device: $(pwd | sed 's/\//\\\//g')/g" docker-compose.yml
